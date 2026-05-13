@@ -37,9 +37,7 @@ Python 3 version.
 %autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
-%if 0%{sailfishos_version} <= 50000
 %{python3} ./setup.py build_ext --inplace --cython
-%endif
 env WITH_CYTHON=true %{py3_build}
 
 %install
