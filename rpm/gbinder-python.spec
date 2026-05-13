@@ -21,6 +21,7 @@ Cython extension module for gbinder
 Summary: %{summary}
 BuildRequires: python3-devel python3-setuptools
 BuildRequires: python3-cython
+BuildRequires: python-rpm-macros
 %{?python_provide:%python_provide python3-%{fedname}}
 %{?python_provide:%python_provide python3-%{modname}}
 
@@ -33,8 +34,7 @@ Python 3 version.
 %setup -q -n %{name}-%{version}/upstream
 
 %build
-%{python3} ./setup.py build_ext --inplace --cython
-env WITH_CYTHON=true %{py3_build}
+%{py3_build}
 
 %install
 %{py3_install}
