@@ -13,6 +13,9 @@ BuildRequires: gcc
 BuildRequires: libgbinder-devel libglibutil-devel pkgconfig
 
 Source: %{name}-%{version}.tar.gz
+%if 0%{sailfishos_version} <= 50000
+Patch0: 001-no-noexcept.patch
+%endif
 
 %description
 Cython extension module for gbinder
@@ -31,7 +34,7 @@ BuildRequires: python-rpm-macros
 Python 3 version.
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 %{py3_build}
